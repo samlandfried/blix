@@ -12,8 +12,15 @@ function logError(msg) {
     console.error(chalk_1.default(templateObject_1 || (templateObject_1 = __makeTemplateObject(["{red ", "}"], ["{red ", "}"])), msg));
 }
 exports.logError = logError;
+function logCriticalError(msg, error) {
+    var errorStack = error && error.stack || 'No stacktrace availabile';
+    console.error(chalk_1.default.bold.red("\n\n\n" + logSymbols.error + " Critical Error - " + msg));
+    console.error(chalk_1.default(templateObject_2 || (templateObject_2 = __makeTemplateObject(["{red \n\n", "}"], ["{red \\n\\n", "}"])), errorStack));
+    process.exit(1);
+}
+exports.logCriticalError = logCriticalError;
 function logWarning(msg) {
-    console.warn(chalk_1.default(templateObject_2 || (templateObject_2 = __makeTemplateObject(["{yellow ", "}"], ["{yellow ", "}"])), msg));
+    console.warn(chalk_1.default(templateObject_3 || (templateObject_3 = __makeTemplateObject(["{yellow ", "}"], ["{yellow ", "}"])), msg));
 }
 exports.logWarning = logWarning;
 function logTaskStatus(task, status, symbol) {
@@ -34,37 +41,37 @@ exports.logTaskStatus = logTaskStatus;
 // logger action methods
 function logCreate(msg) {
     if (store.env === 'development' && store.mode !== 'cli') {
-        console.log(chalk_1.default(templateObject_3 || (templateObject_3 = __makeTemplateObject(["{green create} ", ""], ["{green create} ", ""])), msg));
+        console.log(chalk_1.default(templateObject_4 || (templateObject_4 = __makeTemplateObject(["{green create} ", ""], ["{green create} ", ""])), msg));
     }
 }
 exports.logCreate = logCreate;
 function logDeleted(msg) {
     if (store.env === 'development' && store.mode !== 'cli') {
-        console.log(chalk_1.default(templateObject_4 || (templateObject_4 = __makeTemplateObject(["{red delete} ", ""], ["{red delete} ", ""])), msg));
+        console.log(chalk_1.default(templateObject_5 || (templateObject_5 = __makeTemplateObject(["{red delete} ", ""], ["{red delete} ", ""])), msg));
     }
 }
 exports.logDeleted = logDeleted;
 function logMutate(msg) {
     if (store.env === 'development' && store.mode !== 'cli') {
-        console.log(chalk_1.default(templateObject_5 || (templateObject_5 = __makeTemplateObject(["{yellow mutate} ", ""], ["{yellow mutate} ", ""])), msg));
+        console.log(chalk_1.default(templateObject_6 || (templateObject_6 = __makeTemplateObject(["{yellow mutate} ", ""], ["{yellow mutate} ", ""])), msg));
     }
 }
 exports.logMutate = logMutate;
 function logInsert(msg) {
     if (store.env === 'development' && store.mode !== 'cli') {
-        console.log(chalk_1.default(templateObject_6 || (templateObject_6 = __makeTemplateObject(["{cyan insert} ", ""], ["{cyan insert} ", ""])), msg));
+        console.log(chalk_1.default(templateObject_7 || (templateObject_7 = __makeTemplateObject(["{cyan insert} ", ""], ["{cyan insert} ", ""])), msg));
     }
 }
 exports.logInsert = logInsert;
 function logAppend(msg) {
     if (store.env === 'development' && store.mode !== 'cli') {
-        console.log(chalk_1.default(templateObject_7 || (templateObject_7 = __makeTemplateObject(["{cyan append} ", ""], ["{cyan append} ", ""])), msg));
+        console.log(chalk_1.default(templateObject_8 || (templateObject_8 = __makeTemplateObject(["{cyan append} ", ""], ["{cyan append} ", ""])), msg));
     }
 }
 exports.logAppend = logAppend;
 function logInvoke(msg) {
     if (store.env === 'development' && store.mode !== 'cli') {
-        console.log(chalk_1.default(templateObject_8 || (templateObject_8 = __makeTemplateObject(["{blue invoke} ", ""], ["{blue invoke} ", ""])), msg));
+        console.log(chalk_1.default(templateObject_9 || (templateObject_9 = __makeTemplateObject(["{blue invoke} ", ""], ["{blue invoke} ", ""])), msg));
     }
 }
 exports.logInvoke = logInvoke;
@@ -85,4 +92,4 @@ function clearConsole(title) {
     }
 }
 exports.clearConsole = clearConsole;
-var templateObject_1, templateObject_2, templateObject_3, templateObject_4, templateObject_5, templateObject_6, templateObject_7, templateObject_8;
+var templateObject_1, templateObject_2, templateObject_3, templateObject_4, templateObject_5, templateObject_6, templateObject_7, templateObject_8, templateObject_9;

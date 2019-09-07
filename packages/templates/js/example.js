@@ -15,4 +15,8 @@ class Something {
     {{ ^yeah }}
         <h2>Oh no!</h2>
     {{ /yeah }}
+
+    {{#error}}
+        <h3>Suh</h3>
+    {{/error}}
 }

@@ -7,6 +7,13 @@ export function logError(msg: string) {
     console.error(chalk`{red ${msg}}`)
 }
 
+export function logCriticalError(msg: string, error: Error) {
+    const errorStack = error && error.stack || 'No stacktrace availabile'
+    console.error(chalk.bold.red(`\n\n\n${logSymbols.error} Critical Error - ${msg}`))
+    console.error(chalk`{red \n\n${errorStack}}`)
+    process.exit(1)
+}
+
 export function logWarning(msg: string) {
     console.warn(chalk`{yellow ${msg}}`)
 }

@@ -74,9 +74,9 @@ program
     .action((args) => notes())
 
 program
-    .command('template')
-    .description('Select custom file templates to store in a project, use once, or globally store with Blix')
-    .action((args) => template(args))
+    .command('template [newFileName]')
+    .description('Select prebuilt or custom file templates to store in a project, use once, or globally store with Blix')
+    .action((newFileName) => template(newFileName))
 
 
 program.parse(process.argv);
